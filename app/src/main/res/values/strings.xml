@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TLV Quiz</string>
+    <string name="welcome">Welcome to TLV Quiz!</string>
+    <string name="description">Description</string>
+    <string name="question3_answer">The Mediterranean</string>
+    <string name="question1_body">Where is Tel Aviv located?</string>
+    <string name="question2_body">When was it founded?</string>
+    <string name="question3_body">Tel Aviv sits on the coastline of which sea?</string>
+    <string name="tlv">TLV</string>
+    <string name="question3_false1">The Dead Sea</string>
+    <string name="question3_false2">The Sea of Galilee</string>
+    <string name="question1_false1">Ireland</string>
+    <string name="question1_false2">Isle of Man</string>
+    <string name="question2_answer">1909</string>
+    <string name="question1_answer">Israel</string>
+    <string name="question2_hint">Year (4 digits)</string>
+    <string name="button_submit">Submit</string>
+    <string name="toast">You scored %d in this quiz</string>
+</resources>
