@@ -20,10 +20,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/tlv"
                 android:cropToPadding="false"
                 android:scaleType="fitStart"
-                android:src="@drawable/tlv"
-                android:contentDescription="@string/tlv" />
+                android:src="@drawable/tlv" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,30 +33,25 @@
                 android:textSize="32sp" />
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/description" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/question_where_id"
+                style="@style/QuestionNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
-                android:textSize="32sp" />
+                android:text="1" />
 
             <TextView
                 android:id="@+id/question_where_body"
+                style="@style/QuestionBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/question_where_id"
                 android:layout_toRightOf="@id/question_where_id"
-                android:text="@string/question1_body"
-                android:textSize="24sp" />
+                android:text="@string/question1_body" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -93,19 +88,19 @@
 
             <TextView
                 android:id="@+id/question_year_id"
+                style="@style/QuestionNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
-                android:textSize="32sp" />
+                android:text="2" />
 
             <TextView
                 android:id="@+id/question_year_body"
+                style="@style/QuestionBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/question_year_id"
                 android:layout_toRightOf="@id/question_year_id"
-                android:text="@string/question2_body"
-                android:textSize="24sp" />
+                android:text="@string/question2_body" />
 
             <EditText
                 android:id="@+id/question_year_input"
@@ -114,7 +109,8 @@
                 android:layout_below="@+id/question_year_body"
                 android:layout_toEndOf="@id/question_year_id"
                 android:layout_toRightOf="@id/question_year_id"
-                android:hint="@string/question2_hint" />
+                android:hint="@string/question2_hint"
+                android:inputType="number" />
 
         </RelativeLayout>
 
@@ -124,19 +120,19 @@
 
             <TextView
                 android:id="@+id/question_sea_id"
+                style="@style/QuestionNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3"
-                android:textSize="32sp" />
+                android:text="3" />
 
             <TextView
                 android:id="@+id/question_sea_body"
+                style="@style/QuestionBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/question_sea_id"
                 android:layout_toRightOf="@id/question_sea_id"
-                android:text="@string/question3_body"
-                android:textSize="24sp" />
+                android:text="@string/question3_body" />
 
             <RadioGroup
                 android:layout_width="match_parent"

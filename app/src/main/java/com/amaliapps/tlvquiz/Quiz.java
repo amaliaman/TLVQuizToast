@@ -1,5 +1,7 @@
 package com.amaliapps.tlvquiz;
 
+import android.util.Log;
+
 import java.util.Map;
 
 /**
@@ -11,8 +13,9 @@ class Quiz {
 
     Quiz(Map<Integer, Question> questionList) {
         this.questionList = questionList;
+        double score = 100F / questionList.size();
         for (Question q : questionList.values()) {
-            q.setScore(100 / questionList.size());
+            q.setScore(score);
         }
     }
 
@@ -21,12 +24,12 @@ class Quiz {
     }
 
     int calculateScore() {
-        int score = 0;
+        double score = 0;
         for (Question q : questionList.values()) {
             if (q.getUserAnswer().equals(q.getCorrectAnswer())) {
                 score += q.getScore();
             }
         }
-        return score;
+        return (int) Math.ceil(score);
     }
 }

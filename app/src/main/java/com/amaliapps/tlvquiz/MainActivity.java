@@ -49,15 +49,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitQuiz(View view) {
         setAnswers();
-        int score = quiz.calculateScore();
-        /*
-        replace with double
-         */
-        if (score > 100) {
-            score = 100;
-        } else if (score > 97) {
-            score = 100;
-        }
+        int score = quiz.calculateScore(); // fixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
         String message = ".\nFeel free to try again!";
         if (score == 100) {
