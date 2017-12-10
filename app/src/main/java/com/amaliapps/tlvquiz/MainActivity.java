@@ -3,6 +3,7 @@ package com.amaliapps.tlvquiz;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -33,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
         Question question3 = new Question(getString(R.string.question3_answer));
         questions.put(3, question3);
 
-        /*Question question4 = new Question(20, "1909");
+        Question question4 = new Question(getString(R.string.question4_correct1) + "|" + getString(R.string.question4_correct2));
         questions.put(4, question4);
 
-        Question question5 = new Question(20, "1909");
-        questions.put(5, question5);*/
+        Question question5 = new Question(getString(R.string.question5_answer));
+        questions.put(5, question5);
 
         quiz = new Quiz(questions);
     }
@@ -49,14 +50,18 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitQuiz(View view) {
         setAnswers();
-        int score = quiz.calculateScore(); // fixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        int score = quiz.calculateScore();
 
-        String message = ".\nFeel free to try again!";
+        String message = ".\n" + getString(R.string.toast_fail);
         if (score == 100) {
-            message = ".\nHurray!";
+            message = ".\n" + getString(R.string.toast_pass);
         }
         message = getString(R.string.toast, score) + message;
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    public void resetQuiz(View view){
+
     }
 
     public void setAnswers() {
@@ -85,14 +90,44 @@ public class MainActivity extends AppCompatActivity {
         String answer3 = "";
         RadioButton radioMediterranean = findViewById(R.id.radio_mediterranean);
         RadioButton radioDead = findViewById(R.id.radio_dead);
-        RadioButton radioGalillee = findViewById(R.id.radio_galillee);
+        RadioButton radioGalilee = findViewById(R.id.radio_galilee);
         if (radioMediterranean.isChecked()) {
             answer3 = String.valueOf(radioMediterranean.getText());
         } else if (radioDead.isChecked()) {
             answer3 = String.valueOf(radioDead.getText());
-        } else if (radioGalillee.isChecked()) {
-            answer3 = String.valueOf(radioGalillee.getText());
+        } else if (radioGalilee.isChecked()) {
+            answer3 = String.valueOf(radioGalilee.getText());
         }
         questionList.get(3).setUserAnswer(answer3);
+
+        // get answer 4
+        CheckBox checkboxWhite = findViewById(R.id.checkbox_white);
+        CheckBox checkboxApple = findViewById(R.id.checkbox_apple);
+        CheckBox checkboxNonstop = findViewById(R.id.checkbox_nonstop);
+        boolean correct = false;
+        if (checkboxWhite.isChecked() && !checkboxApple.isChecked() && checkboxNonstop.isChecked()) {
+            correct = true;
+        }
+        String answer4 = "";
+        if (correct) {
+            answer4 = String.valueOf(checkboxWhite.getText()) + "|" + String.valueOf(checkboxNonstop.getText());
+        } else {
+            answer4 = "";
+        }
+        questionList.get(4).setUserAnswer(answer4);
+
+        // get answer 5
+        String answer5 = "";
+        RadioButton radio2 = findViewById(R.id.radio_2);
+        RadioButton radio5 = findViewById(R.id.radio_5);
+        RadioButton radio10 = findViewById(R.id.radio_10);
+        if (radio2.isChecked()) {
+            answer5 = String.valueOf(radio2.getText());
+        } else if (radio5.isChecked()) {
+            answer5 = String.valueOf(radio5.getText());
+        } else if (radio10.isChecked()) {
+            answer5 = String.valueOf(radio10.getText());
+        }
+        questionList.get(5).setUserAnswer(answer5);
     }
 }
