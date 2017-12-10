@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -29,7 +28,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/tlv_image"
+                android:layout_margin="16dp"
+                android:shadowColor="@color/secondary_text"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="10"
                 android:text="@string/welcome"
+                android:textAppearance="@style/AlertDialog.AppCompat.Light"
+                android:textColor="@color/icons"
                 android:textSize="32sp" />
         </RelativeLayout>
 
@@ -303,16 +309,22 @@
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/primary"
                 android:onClick="submitQuiz"
-                android:text="@string/button_submit" />
+                android:text="@string/button_submit"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textColor="@color/icons" />
 
             <Button
+                style="?borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/button_submit"
                 android:layout_toRightOf="@id/button_submit"
                 android:onClick="resetQuiz"
-                android:text="@string/button_reset" />
+                android:text="@string/button_reset"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textColor="@color/primary" />
 
         </RelativeLayout>
     </LinearLayout>
