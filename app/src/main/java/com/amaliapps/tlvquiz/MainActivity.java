@@ -1,11 +1,12 @@
 package com.amaliapps.tlvquiz;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -15,56 +16,18 @@ public class MainActivity extends AppCompatActivity {
 
     Quiz quiz;
 
-    // question 1
-    RadioButton radioIreland;
-    RadioButton radioIsrael;
-    RadioButton radioIsle;
-    // question 2
-    EditText nameTextBox;
-    // question 3
-    RadioButton radioMediterranean;
-    RadioButton radioDead;
-    RadioButton radioGalilee;
-    // question 4
-    CheckBox checkboxWhite;
-    CheckBox checkboxApple;
-    CheckBox checkboxNonstop;
-    // question 5
-    RadioButton radio2;
-    RadioButton radio5;
-    RadioButton radio10;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // create a Quiz and fill it with Question(s)
         createQuiz();
-        getControls();
     }
 
-    private void getControls() {
-        // todo: get all controls i array to reset, then return all these statements to calculate score method
-        // question 1
-        radioIreland = findViewById(R.id.radio_ireland);
-        radioIsrael = findViewById(R.id.radio_israel);
-        radioIsle = findViewById(R.id.radio_isle);
-        // question 2
-        nameTextBox = findViewById(R.id.question_year_input);
-        nameTextBox.clearFocus();
-        // question 3
-        radioMediterranean = findViewById(R.id.radio_mediterranean);
-        radioDead = findViewById(R.id.radio_dead);
-        radioGalilee = findViewById(R.id.radio_galilee);
-        // question 4
-        checkboxWhite = findViewById(R.id.checkbox_white);
-        checkboxApple = findViewById(R.id.checkbox_apple);
-        checkboxNonstop = findViewById(R.id.checkbox_nonstop);
-        // question 5
-        radio2 = findViewById(R.id.radio_2);
-        radio5 = findViewById(R.id.radio_5);
-        radio10 = findViewById(R.id.radio_10);
-    }
-
+    /**
+     * Create a Quiz object and populate it with Question objects
+     */
     public void createQuiz() {
         Map<Integer, Question> questions = new HashMap<>();
 
@@ -87,12 +50,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * When the Submit button is clicked, calculate the score and display it in a toast
+     * When the Submit button is clicked, store the answers in the Quiz object and
+     * then calculate the score and display it in a toast
      *
      * @param view context
      */
     public void submitQuiz(View view) {
-        setAnswers();
+        storeAnswers();
         int score = quiz.calculateScore();
 
         String message = "\n" + getString(R.string.toast_fail);
@@ -103,83 +67,65 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
-    public void resetQuiz(View view) {
-        // todo: BUGGGGG can't check a correct answer after reset, need to check wrong answer then correct again
-        // reset question 1
-        radioIreland.setChecked(false);
-        radioIsrael.setChecked(false);
-        radioIsle.setChecked(false);
-        // reset question 2
-        nameTextBox.setText("");
-        //todo: lose focus
-        // reset question 3
-        radioMediterranean.setChecked(false);
-        radioDead.setChecked(false);
-        radioGalilee.setChecked(false);
-        // reset question 4
-        checkboxWhite.setChecked(false);
-        checkboxApple.setChecked(false);
-        checkboxNonstop.setChecked(false);
-        // reset question 5
-        radio2.setChecked(false);
-        radio5.setChecked(false);
-        radio10.setChecked(false);
-
-        // todo: return focus to top
-    }
-
-    public void setAnswers() {
+    /**
+     * Get the answers from the user (the values from the controls) and store them in
+     * the Quiz object we created. Later another function will check the quiz for correctness.
+     */
+    private void storeAnswers() {
         Map<Integer, Question> questionList = quiz.getQuestionList();
 
         // get answer 1
-        String answer1 = "";
-        if (radioIreland.isChecked()) {
-            answer1 = String.valueOf(radioIreland.getText());
-        } else if (radioIsrael.isChecked()) {
-            answer1 = String.valueOf(radioIsrael.getText());
-        } else if (radioIsle.isChecked()) {
-            answer1 = String.valueOf(radioIsle.getText());
-        }
-        questionList.get(1).setUserAnswer(answer1);
+        String answer = getRadioButtonAnswer(R.id.radio_group_where);
+        questionList.get(1).setUserAnswer(answer);
 
         // get answer 2
-        String answer2 = nameTextBox.getText().toString();
-        questionList.get(2).setUserAnswer(answer2);
+        EditText yearTextBox = findViewById(R.id.question_year_input);
+        answer = yearTextBox.getText().toString();
+        questionList.get(2).setUserAnswer(answer);
 
         // get answer 3
-        String answer3 = "";
-        if (radioMediterranean.isChecked()) {
-            answer3 = String.valueOf(radioMediterranean.getText());
-        } else if (radioDead.isChecked()) {
-            answer3 = String.valueOf(radioDead.getText());
-        } else if (radioGalilee.isChecked()) {
-            answer3 = String.valueOf(radioGalilee.getText());
-        }
-        questionList.get(3).setUserAnswer(answer3);
+        answer = getRadioButtonAnswer(R.id.radio_group_sea);
+        questionList.get(3).setUserAnswer(answer);
 
         // get answer 4
-        // todo: write clean code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        CheckBox checkboxWhite = findViewById(R.id.checkbox_white);
+        CheckBox checkboxApple = findViewById(R.id.checkbox_apple);
+        CheckBox checkboxNonstop = findViewById(R.id.checkbox_nonstop);
         boolean correct = false;
         if (checkboxWhite.isChecked() && !checkboxApple.isChecked() && checkboxNonstop.isChecked()) {
             correct = true;
         }
-        String answer4 = "";
         if (correct) {
-            answer4 = String.valueOf(checkboxWhite.getText()) + "|" + String.valueOf(checkboxNonstop.getText());
+            answer = String.valueOf(checkboxWhite.getText()) + "|" + String.valueOf(checkboxNonstop.getText());
         } else {
-            answer4 = "";
+            answer = "";
         }
-        questionList.get(4).setUserAnswer(answer4);
+        questionList.get(4).setUserAnswer(answer);
 
         // get answer 5
-        String answer5 = "";
-        if (radio2.isChecked()) {
-            answer5 = String.valueOf(radio2.getText());
-        } else if (radio5.isChecked()) {
-            answer5 = String.valueOf(radio5.getText());
-        } else if (radio10.isChecked()) {
-            answer5 = String.valueOf(radio10.getText());
-        }
-        questionList.get(5).setUserAnswer(answer5);
+        answer = getRadioButtonAnswer(R.id.radio_group_beaches);
+        questionList.get(5).setUserAnswer(answer);
+    }
+
+    /**
+     * Get the text of the checked RadioButton in a RadioGroup
+     *
+     * @param id is the id of the RadioGroup (e.g. R.id.radio_group)
+     * @return a String with the text of the checked RadioButton
+     */
+    private String getRadioButtonAnswer(int id) {
+        RadioGroup radioGroup = findViewById(id);
+        int radioButtonID = radioGroup.getCheckedRadioButtonId();
+        if (radioButtonID > -1) { // check if a RadioButton is checked at all
+            RadioButton radioButton = radioGroup.findViewById(radioButtonID);
+            return String.valueOf(radioButton.getText());
+        } else return ""; // return an empty string if no RadioButton is checked
+    }
+
+    public void resetQuiz(View view) {
+        finish();
+        startActivity(getIntent());
+
+        // todo: lose focus edittext
     }
 }

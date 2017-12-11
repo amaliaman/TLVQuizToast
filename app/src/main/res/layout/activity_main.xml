@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="com.amaliapps.tlvquiz.MainActivity">
 
     <LinearLayout
+        android:id="@+id/top_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- header image and text -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -39,6 +42,7 @@
                 android:textSize="32sp" />
         </RelativeLayout>
 
+        <!-- question 1 -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -93,9 +97,14 @@
 
         </RelativeLayout>
 
+        <!-- question 2 -->
         <RelativeLayout
+            android:id="@+id/dummy"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:id="@+id/question_year_id"
@@ -111,6 +120,13 @@
                 android:layout_toRightOf="@id/question_year_id"
                 android:text="@string/question2_body" />
 
+            <!-- 'steal' the focus from the EditText below -->
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="0px"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+
             <EditText
                 android:id="@+id/question_year_input"
                 android:layout_width="wrap_content"
@@ -118,8 +134,11 @@
                 android:layout_below="@+id/question_year_body"
                 android:layout_toEndOf="@id/question_year_id"
                 android:layout_toRightOf="@id/question_year_id"
+                android:focusedByDefault="false"
                 android:hint="@string/question2_hint"
-                android:inputType="number" />
+                android:inputType="number"
+                android:nextFocusLeft="@id/dummy"
+                android:nextFocusUp="@id/dummy" />
 
             <TextView
                 style="@style/Divider"
@@ -128,6 +147,7 @@
                 android:layout_below="@id/question_year_input" />
         </RelativeLayout>
 
+        <!-- question 3 -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -183,7 +203,9 @@
 
         </RelativeLayout>
 
+        <!-- question 4 -->
         <RelativeLayout
+            android:id="@+id/checkbox_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -235,6 +257,7 @@
                 android:layout_below="@id/checkbox_nonstop" />
         </RelativeLayout>
 
+        <!-- question 5 -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -289,6 +312,7 @@
 
         </RelativeLayout>
 
+        <!-- buttons -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -296,7 +320,6 @@
             android:layout_marginStart="48dp">
 
             <Button
-                android:textColor="@android:color/white"
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -305,7 +328,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
                 android:onClick="submitQuiz"
-                android:text="@string/button_submit" />
+                android:text="@string/button_submit"
+                android:textColor="@android:color/white" />
 
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -319,5 +343,6 @@
                 android:textColor="@color/primary" />
 
         </RelativeLayout>
+
     </LinearLayout>
 </ScrollView>

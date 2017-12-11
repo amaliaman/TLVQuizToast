@@ -9,27 +9,27 @@ class Question {
     private String correctAnswer;
     private String userAnswer;
 
-    public Question(String correctAnswer) {
+    Question(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 
-    public double getScore() {
+    double getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    void setScore(double score) {
         this.score = score;
     }
 
-    public String getCorrectAnswer() {
+    String getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public String getUserAnswer() {
+    String getUserAnswer() {
         return userAnswer;
     }
 
-    public void setUserAnswer(String userAnswer) {
+    void setUserAnswer(String userAnswer) {
         this.userAnswer = userAnswer;
     }
 }
