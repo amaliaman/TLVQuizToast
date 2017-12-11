@@ -1,8 +1,12 @@
 package com.amaliapps.tlvquiz;
 
+import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -23,6 +27,25 @@ public class MainActivity extends AppCompatActivity {
 
         // create a Quiz and fill it with Question(s)
         createQuiz();
+    }
+
+    /**
+     * Clear focus on touch outside for all EditText inputs.
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (v instanceof EditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
     }
 
     /**
@@ -122,10 +145,12 @@ public class MainActivity extends AppCompatActivity {
         } else return ""; // return an empty string if no RadioButton is checked
     }
 
+    /**
+     * Clear the quiz - restart the activity
+     * @param view context
+     */
     public void resetQuiz(View view) {
         finish();
         startActivity(getIntent());
-
-        // todo: lose focus edittext
     }
 }

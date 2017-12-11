@@ -99,12 +99,10 @@
 
         <!-- question 2 -->
         <RelativeLayout
-            android:id="@+id/dummy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:descendantFocusability="beforeDescendants"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"><!-- 'steal' focus from the EditText below -->
 
             <TextView
                 android:id="@+id/question_year_id"
@@ -120,13 +118,6 @@
                 android:layout_toRightOf="@id/question_year_id"
                 android:text="@string/question2_body" />
 
-            <!-- 'steal' the focus from the EditText below -->
-            <LinearLayout
-                android:layout_width="0px"
-                android:layout_height="0px"
-                android:focusable="true"
-                android:focusableInTouchMode="true" />
-
             <EditText
                 android:id="@+id/question_year_input"
                 android:layout_width="wrap_content"
@@ -134,11 +125,8 @@
                 android:layout_below="@+id/question_year_body"
                 android:layout_toEndOf="@id/question_year_id"
                 android:layout_toRightOf="@id/question_year_id"
-                android:focusedByDefault="false"
                 android:hint="@string/question2_hint"
-                android:inputType="number"
-                android:nextFocusLeft="@id/dummy"
-                android:nextFocusUp="@id/dummy" />
+                android:inputType="number" />
 
             <TextView
                 style="@style/Divider"
