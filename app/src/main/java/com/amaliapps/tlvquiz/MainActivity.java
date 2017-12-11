@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
         setAnswers();
         int score = quiz.calculateScore();
 
-        String message = ".\n" + getString(R.string.toast_fail);
+        String message = "\n" + getString(R.string.toast_fail);
         if (score == 100) {
-            message = ".\n" + getString(R.string.toast_pass);
+            message = "\n" + getString(R.string.toast_pass);
         }
         message = getString(R.string.toast, score) + message;
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
