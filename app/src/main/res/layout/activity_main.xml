@@ -218,7 +218,7 @@
                 android:layout_below="@+id/question_nick_body"
                 android:layout_toEndOf="@id/question_nick_id"
                 android:layout_toRightOf="@id/question_nick_id"
-                android:text="@string/question4_correct1" />
+                android:text="@string/question4_answer1" />
 
             <CheckBox
                 android:id="@+id/checkbox_apple"
@@ -236,7 +236,7 @@
                 android:layout_below="@+id/checkbox_apple"
                 android:layout_toEndOf="@id/question_nick_id"
                 android:layout_toRightOf="@id/question_nick_id"
-                android:text="@string/question4_correct2" />
+                android:text="@string/question4_answer2" />
 
             <TextView
                 style="@style/Divider"

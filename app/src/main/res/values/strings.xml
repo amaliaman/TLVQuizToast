@@ -1,30 +1,35 @@
 <resources>
     <string name="app_name">TLV Quiz</string>
-    <string name="welcome">Welcome to TLV Quiz!</string>
-    <string name="description">Description</string>
-    <string name="question3_answer">The Mediterranean</string>
-    <string name="question1_body">Where is Tel Aviv located?</string>
-    <string name="question2_body">When was it founded?</string>
-    <string name="question3_body">Tel Aviv sits on the coastline of which sea?</string>
-    <string name="question4_body">Which nicknames does it have?</string>
-    <string name="question5_body">How many public beaches are there in Tel Aviv?</string>
-    <string name="tlv">TLV</string>
-    <string name="question3_false1">The Dead Sea</string>
-    <string name="question4_false1">The Big Apple</string>
-    <string name="question3_false2">The Sea of Galilee</string>
-    <string name="question1_false1">Ireland</string>
-    <string name="question5_false1">2</string>
-    <string name="question1_false2">Isle of Man</string>
-    <string name="question5_false2">5</string>
-    <string name="question2_answer">1909</string>
-    <string name="question5_answer">More than 10</string>
-    <string name="question1_answer">Israel</string>
-    <string name="question2_hint">Year (4 digits)</string>
+    <string name="button_reset">Reset</string>
     <string name="button_submit">Submit</string>
+
+    <string name="question1_answer">Israel</string>
+    <string name="question1_body">Where is Tel Aviv located?</string>
+    <string name="question1_false1">Ireland</string>
+    <string name="question1_false2">Isle of Man</string>
+
+    <string name="question2_answer">1909</string>
+    <string name="question2_body">When was it founded?</string>
+    <string name="question2_hint">Year (4 digits)</string>
+
+    <string name="question3_answer">The Mediterranean</string>
+    <string name="question3_body">Tel Aviv sits on the coastline of which sea?</string>
+    <string name="question3_false1">The Dead Sea</string>
+    <string name="question3_false2">The Sea of Galilee</string>
+
+    <string name="question4_body">Which nicknames does it have?</string>
+    <string name="question4_answer1">The White City</string>
+    <string name="question4_answer2">Non Stop City</string>
+    <string name="question4_false1">The Big Apple</string>
+
+    <string name="question5_answer">More than 10</string>
+    <string name="question5_body">How many public beaches are there in Tel Aviv?</string>
+    <string name="question5_false1">2</string>
+    <string name="question5_false2">5</string>
+
+    <string name="tlv">TLV</string>
     <string name="toast">You scored %d in this quiz.</string>
     <string name="toast_fail">Feel free to try again.</string>
     <string name="toast_pass">Hurray!</string>
-    <string name="question4_correct1">The White City</string>
-    <string name="question4_correct2">Non Stop City</string>
-    <string name="button_reset">Reset</string>
+    <string name="welcome">Welcome to TLV Quiz!</string>
 </resources>

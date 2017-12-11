@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         Question question3 = new Question(getString(R.string.question3_answer));
         questions.put(3, question3);
 
-        Question question4 = new Question(getString(R.string.question4_correct1) + "|" + getString(R.string.question4_correct2));
+        Question question4 = new Question(getString(R.string.question4_answer1) + "|" + getString(R.string.question4_answer2));
         questions.put(4, question4);
 
         Question question5 = new Question(getString(R.string.question5_answer));
