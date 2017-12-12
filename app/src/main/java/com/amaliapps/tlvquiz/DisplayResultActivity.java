@@ -15,7 +15,7 @@ public class DisplayResultActivity extends AppCompatActivity {
         // get variables from main activity
         Intent intent = getIntent();
         int score = Integer.parseInt(intent.getStringExtra(MainActivity.EXTRA_SCORE));// why converted to string???
-        Quiz q = intent.getParcelableExtra("aaa");
+        Quiz q = intent.getParcelableExtra(MainActivity.EXTRA_QUIZ);
 
         TextView textView = findViewById(R.id.a);
         textView.setText(score + "");

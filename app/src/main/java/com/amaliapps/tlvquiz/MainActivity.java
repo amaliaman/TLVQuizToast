@@ -18,6 +18,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "com.amaliapps.tlvquiz.SCORE";
+    public static final String EXTRA_QUIZ = "com.amaliapps.tlvquiz.QUIZ";
+
     Quiz quiz;
 
     @Override
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         // new version - open new activity on submit quiz
         Intent intent = new Intent(this, DisplayResultActivity.class);
         intent.putExtra(EXTRA_SCORE, String.valueOf(score));
-        intent.putExtra("aaa", quiz);
+        intent.putExtra(EXTRA_QUIZ, quiz);
         startActivity(intent);
     }
 
