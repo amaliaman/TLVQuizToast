@@ -1,12 +1,16 @@
 package com.amaliapps.tlvquiz;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by amaliam on 08/12/2017.
  */
 
-class Quiz {
+class Quiz implements Parcelable {
     private static final double MAX_SCORE = 100F;
     private Map<Integer, Question> questionList;
 
@@ -42,5 +46,35 @@ class Quiz {
             }
         }
         return (int) Math.ceil(score);
+    }
+
+    /*
+     * Implementation of Parcelable interface
+     */
+    private Quiz(Parcel in) {
+        questionList = new HashMap<Integer, Question>();
+        in.readMap(questionList, Question.class.getClassLoader());
+    }
+
+    public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
+        @Override
+        public Quiz createFromParcel(Parcel in) {
+            return new Quiz(in);
+        }
+
+        @Override
+        public Quiz[] newArray(int size) {
+            return new Quiz[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeMap(questionList);
     }
 }

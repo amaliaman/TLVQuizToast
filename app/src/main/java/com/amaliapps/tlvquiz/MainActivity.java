@@ -1,21 +1,23 @@
 package com.amaliapps.tlvquiz;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final String EXTRA_SCORE = "com.amaliapps.tlvquiz.SCORE";
     Quiz quiz;
 
     @Override
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 v.getGlobalVisibleRect(outRect);
                 if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
                     v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    }
                 }
             }
         }
@@ -79,12 +85,11 @@ public class MainActivity extends AppCompatActivity {
         storeAnswers();
         int score = quiz.calculateScore();
 
-        String message = "\n" + getString(R.string.toast_fail);
-        if (score == 100) {
-            message = "\n" + getString(R.string.toast_pass);
-        }
-        message = getString(R.string.toast, score) + message;
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        // new version - open new activity on submit quiz
+        Intent intent = new Intent(this, DisplayResultActivity.class);
+        intent.putExtra(EXTRA_SCORE, String.valueOf(score));
+        intent.putExtra("aaa", quiz);
+        startActivity(intent);
     }
 
     /**
@@ -144,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Clear the quiz - restart the activity
+     *
      * @param view context
      */
     public void resetQuiz(View view) {
