@@ -28,8 +28,10 @@
     <string name="question5_false2">5</string>
 
     <string name="tlv">TLV</string>
-    <string name="toast">You scored %d in this quiz.</string>
-    <string name="toast_fail">Feel free to try again.</string>
-    <string name="toast_pass">Hurray!</string>
+    <string name="score_message">You scored %d in this quiz</string>
+    <string name="fail_message">Feel free to try again</string>
+    <string name="pass_message">Hurray!</string>
     <string name="welcome">Welcome to TLV Quiz!</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="your_answer">Your answer: %s</string>
 </resources>

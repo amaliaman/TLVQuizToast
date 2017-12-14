@@ -11,6 +11,7 @@ class Question implements Parcelable {
     private double score;
     private String correctAnswer;
     private String userAnswer;
+    private boolean isCorrect;
 
     Question(String correctAnswer) {
         this.correctAnswer = correctAnswer;
@@ -36,6 +37,14 @@ class Question implements Parcelable {
         this.userAnswer = userAnswer;
     }
 
+    boolean isCorrect() {
+        return isCorrect;
+    }
+
+    void setIsCorrect(boolean isCorrect) {
+        this.isCorrect = isCorrect;
+    }
+
     /*
      * Implementation of Parcelable interface
      */
@@ -43,6 +52,7 @@ class Question implements Parcelable {
         score = in.readDouble();
         correctAnswer = in.readString();
         userAnswer = in.readString();
+        isCorrect = in.readInt() == 1;
     }
 
     public static final Creator<Question> CREATOR = new Creator<Question>() {
@@ -67,5 +77,6 @@ class Question implements Parcelable {
         dest.writeDouble(score);
         dest.writeString(correctAnswer);
         dest.writeString(userAnswer);
+        dest.writeInt((isCorrect ? 1 : 0));
     }
 }

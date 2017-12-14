@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 public class DisplayResultActivity extends AppCompatActivity {
 
+    private final static String SUCCESS_SIGN = " ✔";
+    private final static String FAIL_SIGN = " ✘";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,13 +18,26 @@ public class DisplayResultActivity extends AppCompatActivity {
 
         // get variables from main activity
         Intent intent = getIntent();
-        int score = Integer.parseInt(intent.getStringExtra(MainActivity.EXTRA_SCORE));// why converted to string???
-        Quiz q = intent.getParcelableExtra(MainActivity.EXTRA_QUIZ);
+        int score = intent.getIntExtra(MainActivity.EXTRA_SCORE, 0);
+        Quiz quiz = intent.getParcelableExtra(MainActivity.EXTRA_QUIZ);
 
-        TextView textView = findViewById(R.id.a);
-        textView.setText(score + "");
+        TextView scoreTextView = findViewById(R.id.score_text_view);
+        scoreTextView.setText(getString(R.string.score_message, score));
 
-        TextView textView2 = findViewById(R.id.b);
-        textView2.setText(q.getQuestionList().get(1).getCorrectAnswer());
+        TextView messageTextView = findViewById(R.id.message_text_view);
+        int messageStringResource = (quiz.isSuccess() ? (R.string.pass_message) : (R.string.fail_message));
+        messageTextView.setText(getString(messageStringResource));
+
+        // question 1
+        Question question1 = quiz.getQuestionList().get(1);
+        TextView userAnswer1 = findViewById(R.id.user_answer_1);
+        userAnswer1.setText(getString(R.string.your_answer, question1.getUserAnswer()));
+        userAnswer1.append(question1.isCorrect() ? SUCCESS_SIGN : FAIL_SIGN);
+
+        // question 2
+        Question question2 = quiz.getQuestionList().get(2);
+        TextView userAnswer2 = findViewById(R.id.user_answer_2);
+        userAnswer2.setText(getString(R.string.your_answer, question2.getUserAnswer()));
+        userAnswer2.append(question2.isCorrect() ? SUCCESS_SIGN : FAIL_SIGN);
     }
 }

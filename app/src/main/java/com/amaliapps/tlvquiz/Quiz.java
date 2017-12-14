@@ -13,6 +13,7 @@ import java.util.Map;
 class Quiz implements Parcelable {
     private static final double MAX_SCORE = 100F;
     private Map<Integer, Question> questionList;
+    private boolean isSuccess;
 
     /**
      * -- Constructor --
@@ -33,6 +34,10 @@ class Quiz implements Parcelable {
         return questionList;
     }
 
+    public boolean isSuccess() {
+        return isSuccess;
+    }
+
     /**
      * Calculate the score result of the quiz
      *
@@ -43,7 +48,11 @@ class Quiz implements Parcelable {
         for (Question question : questionList.values()) {
             if (question.getUserAnswer().equals(question.getCorrectAnswer())) {
                 score += question.getScore();
+                question.setIsCorrect(true);
             }
+        }
+        if (score == MAX_SCORE) {
+            isSuccess = true;
         }
         return (int) Math.ceil(score);
     }
@@ -54,6 +63,7 @@ class Quiz implements Parcelable {
     private Quiz(Parcel in) {
         questionList = new HashMap<Integer, Question>();
         in.readMap(questionList, Question.class.getClassLoader());
+        isSuccess = in.readInt() == 1;
     }
 
     public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
@@ -76,5 +86,6 @@ class Quiz implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeMap(questionList);
+        dest.writeInt(isSuccess ? 1 : 0);
     }
 }
