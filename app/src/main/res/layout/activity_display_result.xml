@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context="com.amaliapps.tlvquiz.DisplayResultActivity">
 
     <LinearLayout
@@ -15,39 +14,189 @@
             android:id="@+id/score_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="your score is 100"
+            android:layout_margin="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
             android:id="@+id/message_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="try again"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
-        <!-- question 1 -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/question1_body" />
-
-        <TextView
-            android:id="@+id/user_answer_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="your answer skjdhfs kjdhf" />
-
-        <!-- question 2 -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/question2_body" />
-
-        <TextView
-            android:id="@+id/user_answer_2"
+            style="@style/Divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <!-- question 1 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/question_where_id"
+                style="@style/Question.number"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/question_where_body"
+                style="@style/Result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/question_where_id"
+                android:layout_toRightOf="@id/question_where_id"
+                android:text="@string/question1_body" />
+
+            <TextView
+                android:id="@+id/user_answer_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_where_body"
+                android:layout_toEndOf="@id/question_where_id"
+                android:layout_toRightOf="@id/question_where_id" />
+
+            <TextView
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_answer_1" />
+
+        </RelativeLayout>
+
+        <!-- question 2 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/question_year_id"
+                style="@style/Question.number"
+                android:text="2" />
+
+            <TextView
+                android:id="@+id/question_year_body"
+                style="@style/Result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/question_year_id"
+                android:layout_toRightOf="@id/question_year_id"
+                android:text="@string/question2_body" />
+
+            <TextView
+                android:id="@+id/user_answer_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_year_body"
+                android:layout_toEndOf="@id/question_year_id"
+                android:layout_toRightOf="@id/question_year_id" />
+
+            <TextView
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_answer_2" />
+        </RelativeLayout>
+
+        <!-- question 3 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/question_sea_id"
+                style="@style/Question.number"
+                android:text="3" />
+
+            <TextView
+                android:id="@+id/question_sea_body"
+                style="@style/Result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/question_sea_id"
+                android:layout_toRightOf="@id/question_sea_id"
+                android:text="@string/question3_body" />
+
+            <TextView
+                android:id="@+id/user_answer_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_sea_body"
+                android:layout_toEndOf="@id/question_sea_id"
+                android:layout_toRightOf="@id/question_sea_id" />
+
+            <TextView
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_answer_3" />
+        </RelativeLayout>
+
+        <!-- question 4 -->
+        <RelativeLayout
+            android:id="@+id/checkbox_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/question_nick_id"
+                style="@style/Question.number"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/question_nick_body"
+                style="@style/Result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/question_nick_id"
+                android:layout_toRightOf="@id/question_nick_id"
+                android:text="@string/question4_body" />
+
+            <TextView
+                android:id="@+id/user_answer_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_nick_body"
+                android:layout_toEndOf="@id/question_nick_id"
+                android:layout_toRightOf="@id/question_nick_id" />
+
+            <TextView
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_answer_4" />
+        </RelativeLayout>
+
+        <!-- question 5 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/question_beaches_id"
+                style="@style/Question.number"
+                android:text="5" />
+
+            <TextView
+                android:id="@+id/question_beaches_body"
+                style="@style/Result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/question_beaches_id"
+                android:layout_toRightOf="@id/question_beaches_id"
+                android:text="@string/question5_body" />
+
+            <TextView
+                android:id="@+id/user_answer_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_beaches_body"
+                android:layout_marginBottom="16dp"
+                android:layout_toEndOf="@id/question_beaches_id"
+                android:layout_toRightOf="@id/question_beaches_id" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 </ScrollView>

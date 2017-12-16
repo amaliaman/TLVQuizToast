@@ -118,14 +118,15 @@ public class MainActivity extends AppCompatActivity {
         CheckBox checkboxWhite = findViewById(R.id.checkbox_white);
         CheckBox checkboxApple = findViewById(R.id.checkbox_apple);
         CheckBox checkboxNonstop = findViewById(R.id.checkbox_nonstop);
-        boolean correct = false;
-        if (checkboxWhite.isChecked() && !checkboxApple.isChecked() && checkboxNonstop.isChecked()) {
-            correct = true;
+        answer = "";
+        if (checkboxWhite.isChecked()) {
+            answer += checkboxWhite.getText() + "|";
         }
-        if (correct) {
-            answer = String.valueOf(checkboxWhite.getText()) + "|" + String.valueOf(checkboxNonstop.getText());
-        } else {
-            answer = "";
+        if (checkboxApple.isChecked()) {
+            answer += checkboxApple.getText() + "|";
+        }
+        if (checkboxNonstop.isChecked()) {
+            answer += checkboxNonstop.getText() + "";
         }
         questionList.get(4).setUserAnswer(answer);
 

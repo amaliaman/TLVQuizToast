@@ -156,7 +156,7 @@
 
             <RadioGroup
                 android:id="@+id/radio_group_sea"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/question_sea_body"
                 android:layout_toEndOf="@id/question_sea_id"
@@ -181,7 +181,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/question3_false2" />
             </RadioGroup>
-
 
             <TextView
                 style="@style/Divider"
