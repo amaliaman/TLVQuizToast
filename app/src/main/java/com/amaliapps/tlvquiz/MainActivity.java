@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         storeAnswers();
         int score = quiz.calculateScore();
 
-        // v2 - open new activity on submit quiz
+        // open new activity on submit quiz
         Intent intent = new Intent(this, DisplayResultActivity.class);
         intent.putExtra(EXTRA_SCORE, score);
         intent.putExtra(EXTRA_QUIZ, quiz);

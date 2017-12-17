@@ -13,7 +13,7 @@ import java.util.Map;
 class Quiz implements Parcelable {
     private static final double MAX_SCORE = 100F;
     private Map<Integer, Question> questionList;
-    private boolean isSuccess;
+    private boolean isSuccess = false;
 
     /**
      * -- Constructor --
@@ -34,7 +34,7 @@ class Quiz implements Parcelable {
         return questionList;
     }
 
-    public boolean isSuccess() {
+    boolean isSuccess() {
         return isSuccess;
     }
 
@@ -46,11 +46,13 @@ class Quiz implements Parcelable {
     int calculateScore() {
         double score = 0;
         for (Question question : questionList.values()) {
+            question.setIsCorrect(false);
             if (question.getUserAnswer().equals(question.getCorrectAnswer())) {
                 score += question.getScore();
                 question.setIsCorrect(true);
             }
         }
+        isSuccess = false;
         if (score == MAX_SCORE) {
             isSuccess = true;
         }
