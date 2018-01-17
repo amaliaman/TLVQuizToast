@@ -3,8 +3,12 @@ package com.amaliapps.tlvquiz;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -158,5 +162,38 @@ public class MainActivity extends AppCompatActivity {
     public void resetQuiz(View view) {
         finish();
         startActivity(getIntent());
+    }
+
+    /**
+     * ?????????????????????????????????
+     *
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.app_menu, menu);
+        return true;
+    }
+
+    /**
+     * ??????????????????
+     *
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.credit_option:
+                //Toast.makeText(this, "Photo by Adam Jang on Unsplash", Toast.LENGTH_LONG).show();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://unsplash.com/@adamjang?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"));
+                startActivity(browserIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
