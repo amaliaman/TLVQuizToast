@@ -3,7 +3,6 @@ package com.amaliapps.tlvquiz;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -16,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -165,10 +165,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * ?????????????????????????????????
-     *
-     * @param menu
-     * @return
+     * @param menu options menu
+     * @return true
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -178,19 +176,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * ??????????????????
-     *
-     * @param item
-     * @return
+     * @param item menu item
+     * @return true
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.credit_option:
-                //Toast.makeText(this, "Photo by Adam Jang on Unsplash", Toast.LENGTH_LONG).show();
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://unsplash.com/@adamjang?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"));
-                startActivity(browserIntent);
+                Toast.makeText(this, "Photo by Adam Jang on Unsplash", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
