@@ -29,6 +29,10 @@ public class DisplayResultActivity extends AppCompatActivity {
         populateUserAnswerMessages(quiz);
     }
 
+    /**
+     * Display the answers the user answered
+     * @param quiz the quiz
+     */
     private void populateUserAnswerMessages(Quiz quiz) {
         // question 1
         Question question1 = quiz.getQuestionList().get(1);
@@ -56,6 +60,12 @@ public class DisplayResultActivity extends AppCompatActivity {
         getAnswer(question5, userAnswer5);
     }
 
+    /**
+     * Display a success or failure icon according to the user's answer
+     *
+     * @param question the relevant question
+     * @param userAnswer the relevant TextView
+     */
     private void getAnswer(Question question, TextView userAnswer) {
         userAnswer.setText(getString(R.string.your_answer, question.getUserAnswer()));
 
