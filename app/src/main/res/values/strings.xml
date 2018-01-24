@@ -35,4 +35,5 @@
     <string name="congratulations">Congratulations!</string>
     <string name="your_answer">Your answer: %s</string>
     <string name="photo_credit">Photo Credit</string>
+    <string name="icons_credit">Icons Credit</string>
 </resources>

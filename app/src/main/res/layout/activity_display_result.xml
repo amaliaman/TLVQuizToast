@@ -55,7 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/question_where_body"
                 android:layout_toEndOf="@id/question_where_id"
-                android:layout_toRightOf="@id/question_where_id" />
+                android:layout_toRightOf="@id/question_where_id"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical" />
 
             <TextView
                 style="@style/Divider"
@@ -90,7 +92,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/question_year_body"
                 android:layout_toEndOf="@id/question_year_id"
-                android:layout_toRightOf="@id/question_year_id" />
+                android:layout_toRightOf="@id/question_year_id"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical" />
 
             <TextView
                 style="@style/Divider"
@@ -124,7 +128,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/question_sea_body"
                 android:layout_toEndOf="@id/question_sea_id"
-                android:layout_toRightOf="@id/question_sea_id" />
+                android:layout_toRightOf="@id/question_sea_id"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical" />
 
             <TextView
                 style="@style/Divider"
@@ -159,7 +165,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/question_nick_body"
                 android:layout_toEndOf="@id/question_nick_id"
-                android:layout_toRightOf="@id/question_nick_id" />
+                android:layout_toRightOf="@id/question_nick_id"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical" />
 
             <TextView
                 style="@style/Divider"
@@ -194,7 +202,9 @@
                 android:layout_below="@+id/question_beaches_body"
                 android:layout_marginBottom="16dp"
                 android:layout_toEndOf="@id/question_beaches_id"
-                android:layout_toRightOf="@id/question_beaches_id" />
+                android:layout_toRightOf="@id/question_beaches_id"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical" />
 
         </RelativeLayout>
 

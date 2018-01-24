@@ -7,10 +7,6 @@ import android.widget.TextView;
 
 public class DisplayResultActivity extends AppCompatActivity {
 
-    private final static String SUCCESS_SIGN = "✔";
-    private final static String FAIL_SIGN = "✘";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,31 +33,38 @@ public class DisplayResultActivity extends AppCompatActivity {
         // question 1
         Question question1 = quiz.getQuestionList().get(1);
         TextView userAnswer1 = findViewById(R.id.user_answer_1);
-        userAnswer1.setText(getUserMessage(question1));
+        getAnswer(question1, userAnswer1);
 
         // question 2
         Question question2 = quiz.getQuestionList().get(2);
         TextView userAnswer2 = findViewById(R.id.user_answer_2);
-        userAnswer2.setText(getUserMessage(question2));
+        getAnswer(question2, userAnswer2);
 
         // question 3
         Question question3 = quiz.getQuestionList().get(3);
         TextView userAnswer3 = findViewById(R.id.user_answer_3);
-        userAnswer3.setText(getUserMessage(question3));
+        getAnswer(question3, userAnswer3);
 
         // question 4
         Question question4 = quiz.getQuestionList().get(4);
         TextView userAnswer4 = findViewById(R.id.user_answer_4);
-        userAnswer4.setText(getUserMessage(question4));
+        getAnswer(question4, userAnswer4);
 
         // question 5
         Question question5 = quiz.getQuestionList().get(5);
         TextView userAnswer5 = findViewById(R.id.user_answer_5);
-        userAnswer5.setText(getUserMessage(question5));
+        getAnswer(question5, userAnswer5);
     }
 
-    private String getUserMessage(Question question) {
-        return getString(R.string.your_answer, question.getUserAnswer()) +
-                " " + (question.isCorrect() ? SUCCESS_SIGN : FAIL_SIGN);
+    private void getAnswer(Question question, TextView userAnswer) {
+        userAnswer.setText(getString(R.string.your_answer, question.getUserAnswer()));
+
+        int iconDrawable;
+        if (question.isCorrect()) {
+            iconDrawable = R.drawable.ic_success;
+        } else {
+            iconDrawable = R.drawable.ic_error;
+        }
+        userAnswer.setCompoundDrawablesWithIntrinsicBounds(iconDrawable, 0, 0, 0);
     }
 }

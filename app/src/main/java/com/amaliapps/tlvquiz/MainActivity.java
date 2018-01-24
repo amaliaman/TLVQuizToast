@@ -176,15 +176,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Handle menu options
+     *
      * @param item menu item
      * @return true
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
-            case R.id.credit_option:
-                Toast.makeText(this, "Photo by Adam Jang on Unsplash", Toast.LENGTH_LONG).show();
+            case R.id.photo_credit_option:
+                Toast.makeText(this, "Tel Aviv photo by Adam Jang on Unsplash", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.icons_credit_option:
+                Toast.makeText(this, "Answer icons designed by Pixel Buddha from Flaticon", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
