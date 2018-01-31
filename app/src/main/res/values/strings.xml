@@ -34,6 +34,9 @@
     <string name="welcome">Welcome to TLV Quiz!</string>
     <string name="congratulations">Congratulations!</string>
     <string name="your_answer">Your answer: %s</string>
+
     <string name="photo_credit">Photo Credit</string>
     <string name="icons_credit">Icons Credit</string>
+    <string name="photo_credit_body">Tel Aviv photo by Adam Jang on Unsplash</string>
+    <string name="icons_credit_body">Answer icons designed by Pixel Buddha from Flaticon</string>
 </resources>

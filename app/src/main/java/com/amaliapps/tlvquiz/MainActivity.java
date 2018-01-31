@@ -185,10 +185,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.photo_credit_option:
-                Toast.makeText(this, "Tel Aviv photo by Adam Jang on Unsplash", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.photo_credit_body, Toast.LENGTH_LONG).show();
                 return true;
             case R.id.icons_credit_option:
-                Toast.makeText(this, "Answer icons designed by Pixel Buddha from Flaticon", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.icons_credit_body, Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
