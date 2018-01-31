@@ -39,4 +39,5 @@
     <string name="icons_credit">Icons Credit</string>
     <string name="photo_credit_body">Tel Aviv photo by Adam Jang on Unsplash</string>
     <string name="icons_credit_body">Answer icons designed by Pixel Buddha from Flaticon</string>
+    <string name="results_label">TLV Quiz Results</string>
 </resources>
