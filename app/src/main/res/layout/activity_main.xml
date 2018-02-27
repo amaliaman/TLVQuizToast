@@ -4,7 +4,7 @@
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.amaliapps.tlvquiz.MainActivity">
+    tools:context="com.amaliapps.tlvquiztoast.MainActivity">
 
     <LinearLayout
         android:id="@+id/top_linear"

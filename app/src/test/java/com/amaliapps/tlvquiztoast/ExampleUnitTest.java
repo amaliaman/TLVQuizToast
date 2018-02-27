@@ -1,4 +1,4 @@
-package com.amaliapps.tlvquiz;
+package com.amaliapps.tlvquiztoast;
 
 import org.junit.Test;
 

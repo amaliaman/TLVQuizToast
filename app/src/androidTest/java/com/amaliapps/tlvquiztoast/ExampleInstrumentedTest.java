@@ -1,4 +1,4 @@
-package com.amaliapps.tlvquiz;
+package com.amaliapps.tlvquiztoast;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

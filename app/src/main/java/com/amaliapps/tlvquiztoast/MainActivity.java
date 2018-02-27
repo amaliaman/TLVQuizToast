@@ -1,7 +1,6 @@
-package com.amaliapps.tlvquiz;
+package com.amaliapps.tlvquiztoast;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,8 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_SCORE = "com.amaliapps.tlvquiz.SCORE";
-    public static final String EXTRA_QUIZ = "com.amaliapps.tlvquiz.QUIZ";
 
     Quiz quiz;
 
@@ -91,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
         storeAnswers();
         int score = quiz.calculateScore();
 
-        // open new activity on submit quiz
-        Intent intent = new Intent(this, DisplayResultActivity.class);
-        intent.putExtra(EXTRA_SCORE, score);
-        intent.putExtra(EXTRA_QUIZ, quiz);
-        startActivity(intent);
+        // display toast with results
+        String resultMessage = getString(R.string.score_message, score);
+        int messageStringResource = (quiz.isSuccess() ? (R.string.pass_message) : (R.string.fail_message));
+        resultMessage += "\n" + getString(messageStringResource);
+        Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
     }
 
     /**
